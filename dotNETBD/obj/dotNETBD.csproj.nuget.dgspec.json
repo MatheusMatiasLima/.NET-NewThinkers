@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mathe\\Documents\\.NET-BD\\dotNETBD\\dotNETBD\\dotNETBD.csproj": {}
+    "C:\\Users\\mathe\\Documents\\GitHub\\.NET-NewThinkers\\dotNETBD\\dotNETBD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mathe\\Documents\\.NET-BD\\dotNETBD\\dotNETBD\\dotNETBD.csproj": {
+    "C:\\Users\\mathe\\Documents\\GitHub\\.NET-NewThinkers\\dotNETBD\\dotNETBD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mathe\\Documents\\.NET-BD\\dotNETBD\\dotNETBD\\dotNETBD.csproj",
+        "projectUniqueName": "C:\\Users\\mathe\\Documents\\GitHub\\.NET-NewThinkers\\dotNETBD\\dotNETBD.csproj",
         "projectName": "dotNETBD",
-        "projectPath": "C:\\Users\\mathe\\Documents\\.NET-BD\\dotNETBD\\dotNETBD\\dotNETBD.csproj",
+        "projectPath": "C:\\Users\\mathe\\Documents\\GitHub\\.NET-NewThinkers\\dotNETBD\\dotNETBD.csproj",
         "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mathe\\Documents\\.NET-BD\\dotNETBD\\dotNETBD\\obj\\",
+        "outputPath": "C:\\Users\\mathe\\Documents\\GitHub\\.NET-NewThinkers\\dotNETBD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mathe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,20 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
