@@ -17,6 +17,24 @@ namespace dotNETBD.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+            modelBuilder.Entity("dotNETBD.Entities.Pessoa", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("cpf")
+                        .HasColumnType("text");
+
+                    b.Property<string>("nome")
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("pessoas");
+                });
 #pragma warning restore 612, 618
         }
     }

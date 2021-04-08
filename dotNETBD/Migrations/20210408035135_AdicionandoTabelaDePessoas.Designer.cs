@@ -9,8 +9,8 @@ using dotNETBD.Context;
 namespace dotNETBD.Migrations
 {
     [DbContext(typeof(LocalDbContext))]
-    [Migration("20210408005548_Primeiro Migrations")]
-    partial class PrimeiroMigrations
+    [Migration("20210408035135_AdicionandoTabelaDePessoas")]
+    partial class AdicionandoTabelaDePessoas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,24 @@ namespace dotNETBD.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+            modelBuilder.Entity("dotNETBD.Entities.Pessoa", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("cpf")
+                        .HasColumnType("text");
+
+                    b.Property<string>("nome")
+                        .HasColumnType("text");
+
+                    b.HasKey("id");
+
+                    b.ToTable("pessoas");
+                });
 #pragma warning restore 612, 618
         }
     }
