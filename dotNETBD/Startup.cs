@@ -29,7 +29,7 @@ namespace dotNETBD
         public void ConfigureServices(IServiceCollection services)
         {
             //Conexao com o banco de dados
-            services.AddEntityFrameworkNpgsql().AddDbContext<LocalDbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("dotNET")));
+            services.AddEntityFrameworkNpgsql().AddDbContext<LocalDbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("postgresDotNet")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
