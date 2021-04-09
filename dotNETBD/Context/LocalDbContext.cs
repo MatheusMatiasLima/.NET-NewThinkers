@@ -8,14 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace dotNETBD.Context
 {
-    public class LocalDbContext : DbContext
-    {
+    public class LocalDbContext : DbContext {
+        public DbSet<Pessoa> pessoas { get; set; }
+
         public LocalDbContext (DbContextOptions<LocalDbContext> opt) : base (opt)
         {
 
         }
-
-        public DbSet<Pessoa> pessoas { get; set; }
 
         protected override void OnModelCreating (ModelBuilder modelBuilder)
         {

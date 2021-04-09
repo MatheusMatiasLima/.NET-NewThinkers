@@ -1,4 +1,5 @@
 using dotNETBD.Context;
+using dotNETBD.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,12 +31,11 @@ namespace dotNETBD
         {
             //Conexao com o banco de dados
             services.AddEntityFrameworkNpgsql().AddDbContext<LocalDbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("postgresDotNet")));
+            //Injetando o IPessoaServices e o PessoaServices no container
+            services.AddScoped<IPessoaServices , PessoaServices>();
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "dotNETBD", Version = "v1" });
-            });
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "dotNETBD", Version = "v1" }); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
