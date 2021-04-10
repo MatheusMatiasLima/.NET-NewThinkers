@@ -1,5 +1,12 @@
+using dotNETBD.Adapter;
+using dotNETBD.Bordas.Adapter;
+//using dotNETBD.Bordas.Adapter;
+using dotNETBD.Bordas.Pessoa.Repositorio;
+using dotNETBD.Bordas.Pessoa.UseCase;
 using dotNETBD.Context;
+using dotNETBD.Repositorios;
 using dotNETBD.Services;
+using dotNETBD.UseCase.Pessoa;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +40,20 @@ namespace dotNETBD
             services.AddEntityFrameworkNpgsql().AddDbContext<LocalDbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("postgresDotNet")));
             //Injetando o IPessoaServices e o PessoaServices no container
             services.AddScoped<IPessoaServices , PessoaServices>();
+
+            //Injetando os UseCase
+            services.AddScoped<IAdicionarPessoaUseCase , AdicionarPessoaUseCase>();
+            services.AddScoped<IAtualizarPessoaUseCase , AtualizarPessoaUseCase>();
+            services.AddScoped<IDeletarPessoaUseCase , DeletarPessoaUseCase>();
+            services.AddScoped<IRetornarPessoaPorIDUseCase , RetornarPessoaPorIDUseCase>();
+            services.AddScoped<IRetornarTodasPessoasUseCase , RetornarTodasPessoasUseCase>();
+
+            services.AddScoped<IRepositorioPessoa , RepositorioPessoa>();
+            services.AddScoped<IAdicionarPessoaAdapter , AdicionarPessoaAdapter>();
+
+
+
+
 
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "dotNETBD", Version = "v1" }); });

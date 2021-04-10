@@ -32,12 +32,9 @@ namespace dotNETBD.Services
             catch {
                 return false;
             }
-
-            
         }
 
         public bool DeletarPessoa(int id) {
-
             Pessoa apagarEsse = local.pessoas.Where(d => d.id == id).FirstOrDefault();
             local.Remove(apagarEsse);
             local.SaveChanges();

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using dotNETBD.Services;
 using dotNETBD.Entities;
+using dotNETBD.Bordas.Pessoa.UseCase;
+using dotNETBD.DTO.Pessoa.AdicionarPessoa;
 
 namespace dotNETBD.Controllers
 {
@@ -15,10 +17,12 @@ namespace dotNETBD.Controllers
 
         private readonly ILogger<PessoaController> logger;
         private readonly IPessoaServices pessoa;
+        private readonly IAdicionarPessoaUseCase adicionarPessoaUseCase;
 
-        public PessoaController(ILogger<PessoaController> logger , IPessoaServices pessoa) {
+        public PessoaController(ILogger<PessoaController> logger , IPessoaServices pessoa , IAdicionarPessoaUseCase adicionarPessoa) {
             this.logger = logger;
             this.pessoa = pessoa;
+            this.adicionarPessoaUseCase = adicionarPessoa;
         }
 
         [HttpGet]
@@ -32,8 +36,8 @@ namespace dotNETBD.Controllers
         }
 
         [HttpPost]
-        public IActionResult AdicionarPessoa([FromBody] Pessoa novaPessoa) {
-            return Ok(pessoa.AdicionarPessoa(novaPessoa));
+        public IActionResult AdicionarPessoa([FromBody] AdicionarPessoaRequest novaPessoa) {
+            return Ok(adicionarPessoaUseCase.Executar(novaPessoa));
         }
 
         [HttpPut]
