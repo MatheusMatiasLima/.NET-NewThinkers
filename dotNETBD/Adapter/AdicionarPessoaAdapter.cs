@@ -9,10 +9,11 @@ using dotNETBD.Entities;
 
 namespace dotNETBD.Adapter {
     public class AdicionarPessoaAdapter : IAdicionarPessoaAdapter  {
-        public Pessoa converterRequestParaPessoa(AdicionarPessoaRequest request) { 
-            Pessoa novaPessoa = new Pessoa();
-            novaPessoa.nome = request.nome;
-            novaPessoa.cpf = request.cpf;
+        public Pessoa ConverterRequestParaPessoa(AdicionarPessoaRequest request) {
+            Pessoa novaPessoa = new() {
+                nome = request.nome ,
+                cpf = request.cpf
+            };
             return novaPessoa;
         }
     }
