@@ -11,6 +11,7 @@ namespace dotNETBD.Adapter {
     public class AtualizarPessoaAdapter : IAtualizarPessoaAdapter {
         public Pessoa ConverterRequestParaPessoa(AtualizarPessoaRequest request) {
             Pessoa novaPessoa = new() {
+                id = request.id,
                 nome = request.nome ,
                 cpf = request.cpf
             };
