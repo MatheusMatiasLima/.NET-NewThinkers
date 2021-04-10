@@ -8,16 +8,16 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace dotNETBD.Repositorios {
-    public class RepositorioPessoa : IRepositorioPessoa {
+    public class RepositorioPessoaAdd : IRepositorioPessoaAdd {
 
         private readonly LocalDbContext local;
 
-        public RepositorioPessoa(LocalDbContext local) {
+        public RepositorioPessoaAdd(LocalDbContext local) {
             this.local = local;
         }
 
         public void Add(Pessoa request) {
-            //local.pessoas.Add(request);
+            local.pessoas.Add(request);
             local.SaveChanges();
         }
     }

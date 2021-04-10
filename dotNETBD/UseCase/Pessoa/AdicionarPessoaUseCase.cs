@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 namespace dotNETBD.UseCase.Pessoa {
     public class AdicionarPessoaUseCase : IAdicionarPessoaUseCase {
 
-        private readonly IRepositorioPessoa repositorioPessoa;
+        private readonly IRepositorioPessoaAdd repositorioPessoa;
         private readonly IAdicionarPessoaAdapter adapter;
 
-        public AdicionarPessoaUseCase(IRepositorioPessoa repositorioPessoa , IAdicionarPessoaAdapter adapter) {
+        public AdicionarPessoaUseCase(IRepositorioPessoaAdd repositorioPessoa , IAdicionarPessoaAdapter adapter) {
             this.repositorioPessoa = repositorioPessoa;
             this.adapter = adapter;
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using dotNETBD.Entities;
 
 namespace dotNETBD.Bordas.Pessoa.Repositorio {
-    public interface IRepositorioPessoa {
+    public interface IRepositorioPessoaAdd {
         public void Add(Entities.Pessoa request);
     }
 }

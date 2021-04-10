@@ -5,5 +5,7 @@ using System.Threading.Tasks;
 
 namespace dotNETBD.DTO.Pessoa.AtualizarPessoa {
     public class AtualizarPessoaResponse {
+
+        public string mensagem;
     }
 }

@@ -1,8 +1,8 @@
 using dotNETBD.Adapter;
 using dotNETBD.Bordas.Adapter;
-//using dotNETBD.Bordas.Adapter;
 using dotNETBD.Bordas.Pessoa.Repositorio;
 using dotNETBD.Bordas.Pessoa.UseCase;
+using dotNETBD.Bordas.Repositorio;
 using dotNETBD.Context;
 using dotNETBD.Repositorios;
 using dotNETBD.Services;
@@ -48,8 +48,13 @@ namespace dotNETBD
             services.AddScoped<IRetornarPessoaPorIDUseCase , RetornarPessoaPorIDUseCase>();
             services.AddScoped<IRetornarTodasPessoasUseCase , RetornarTodasPessoasUseCase>();
 
-            services.AddScoped<IRepositorioPessoa , RepositorioPessoa>();
+
+            services.AddScoped<IRepositorioPessoaAdd , RepositorioPessoaAdd>();
+            services.AddScoped<IRepositorioAtualizarPessoa , RepositorioAtualizarPessoa>();
+
+
             services.AddScoped<IAdicionarPessoaAdapter , AdicionarPessoaAdapter>();
+            services.AddScoped<IAtualizarPessoaAdapter , AtualizarPessoaAdapter>();
 
 
 

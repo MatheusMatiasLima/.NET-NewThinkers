@@ -8,6 +8,8 @@ using dotNETBD.Services;
 using dotNETBD.Entities;
 using dotNETBD.Bordas.Pessoa.UseCase;
 using dotNETBD.DTO.Pessoa.AdicionarPessoa;
+using dotNETBD.UseCase.Pessoa;
+using dotNETBD.DTO.Pessoa.AtualizarPessoa;
 
 namespace dotNETBD.Controllers
 {
@@ -18,11 +20,16 @@ namespace dotNETBD.Controllers
         private readonly ILogger<PessoaController> logger;
         private readonly IPessoaServices pessoa;
         private readonly IAdicionarPessoaUseCase adicionarPessoaUseCase;
+        private readonly IAtualizarPessoaUseCase atualizarPessoaUseCase;
 
-        public PessoaController(ILogger<PessoaController> logger , IPessoaServices pessoa , IAdicionarPessoaUseCase adicionarPessoa) {
+        public PessoaController(ILogger<PessoaController> logger , IPessoaServices pessoa ,
+                                IAdicionarPessoaUseCase adicionarPessoa,
+                                IAtualizarPessoaUseCase atualizarPessoa) {
+                   
             this.logger = logger;
             this.pessoa = pessoa;
             this.adicionarPessoaUseCase = adicionarPessoa;
+            this.atualizarPessoaUseCase = atualizarPessoa;
         }
 
         [HttpGet]
@@ -41,8 +48,9 @@ namespace dotNETBD.Controllers
         }
 
         [HttpPut]
-        public IActionResult AtualizarPessoa([FromBody] Pessoa novaPessoa) {
-            return Ok(pessoa.AtualizarPessoa(novaPessoa));
+        public IActionResult AtualizarPessoa([FromBody] AtualizarPessoaRequest novaPessoa) {
+            return Ok(atualizarPessoaUseCase.Executar(novaPessoa));
+            //return Ok(pessoa.AtualizarPessoa(novaPessoa));
         }
 
         [HttpDelete("{id}")]
