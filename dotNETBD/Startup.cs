@@ -51,12 +51,13 @@ namespace dotNETBD
 
             services.AddScoped<IRepositorioPessoaAdd , RepositorioPessoaAdd>();
             services.AddScoped<IRepositorioAtualizarPessoa , RepositorioAtualizarPessoa>();
+            services.AddScoped<IRepositorioDeletarPessoa , RepositorioDeletarPessoa>();
 
 
             services.AddScoped<IAdicionarPessoaAdapter , AdicionarPessoaAdapter>();
             services.AddScoped<IAtualizarPessoaAdapter , AtualizarPessoaAdapter>();
 
-
+            services.AddScoped<IDeletarPessoaAdapter , DeletarPessoaAdapter>();
 
 
 

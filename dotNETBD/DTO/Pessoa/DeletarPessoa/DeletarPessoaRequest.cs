@@ -5,5 +5,6 @@ using System.Threading.Tasks;
 
 namespace dotNETBD.DTO.Pessoa.DeletarPessoa {
     public class DeletarPessoaRequest {
+        public int id { get; set; }
     }
 }

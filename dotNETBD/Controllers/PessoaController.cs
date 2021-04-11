@@ -10,6 +10,7 @@ using dotNETBD.Bordas.Pessoa.UseCase;
 using dotNETBD.DTO.Pessoa.AdicionarPessoa;
 using dotNETBD.UseCase.Pessoa;
 using dotNETBD.DTO.Pessoa.AtualizarPessoa;
+using dotNETBD.DTO.Pessoa.DeletarPessoa;
 
 namespace dotNETBD.Controllers
 {
@@ -21,15 +22,18 @@ namespace dotNETBD.Controllers
         private readonly IPessoaServices pessoa;
         private readonly IAdicionarPessoaUseCase adicionarPessoaUseCase;
         private readonly IAtualizarPessoaUseCase atualizarPessoaUseCase;
+        private readonly IDeletarPessoaUseCase deletarPessoaUseCase;
 
         public PessoaController(ILogger<PessoaController> logger , IPessoaServices pessoa ,
                                 IAdicionarPessoaUseCase adicionarPessoa,
-                                IAtualizarPessoaUseCase atualizarPessoa) {
+                                IAtualizarPessoaUseCase atualizarPessoa,
+                                IDeletarPessoaUseCase deletarPessoa) {
                    
             this.logger = logger;
             this.pessoa = pessoa;
             this.adicionarPessoaUseCase = adicionarPessoa;
             this.atualizarPessoaUseCase = atualizarPessoa;
+            this.deletarPessoaUseCase = deletarPessoa;
         }
 
         [HttpGet]
@@ -54,8 +58,9 @@ namespace dotNETBD.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeletarPessoa(int id) {
-            return Ok(pessoa.DeletarPessoa(id));
+        public IActionResult DeletarPessoa(DeletarPessoaRequest deletarPessoa) {
+            return Ok(deletarPessoaUseCase.Executar(deletarPessoa));
+            //return Ok(pessoa.DeletarPessoa(id));
         }
 
 
