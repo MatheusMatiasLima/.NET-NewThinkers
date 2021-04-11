@@ -11,6 +11,7 @@ using dotNETBD.DTO.Pessoa.AdicionarPessoa;
 using dotNETBD.UseCase.Pessoa;
 using dotNETBD.DTO.Pessoa.AtualizarPessoa;
 using dotNETBD.DTO.Pessoa.DeletarPessoa;
+using dotNETBD.DTO.Pessoa.RetornarPessoaPorID;
 
 namespace dotNETBD.Controllers
 {
@@ -23,17 +24,22 @@ namespace dotNETBD.Controllers
         private readonly IAdicionarPessoaUseCase adicionarPessoaUseCase;
         private readonly IAtualizarPessoaUseCase atualizarPessoaUseCase;
         private readonly IDeletarPessoaUseCase deletarPessoaUseCase;
+        private readonly IRetornarPessoaPorIDUseCase retornarPessoaIDUseCase;
 
         public PessoaController(ILogger<PessoaController> logger , IPessoaServices pessoa ,
                                 IAdicionarPessoaUseCase adicionarPessoa,
                                 IAtualizarPessoaUseCase atualizarPessoa,
-                                IDeletarPessoaUseCase deletarPessoa) {
+                                IDeletarPessoaUseCase deletarPessoa,
+                                IRetornarPessoaPorIDUseCase retornarPessoaID) {
                    
             this.logger = logger;
             this.pessoa = pessoa;
             this.adicionarPessoaUseCase = adicionarPessoa;
             this.atualizarPessoaUseCase = atualizarPessoa;
             this.deletarPessoaUseCase = deletarPessoa;
+            this.retornarPessoaIDUseCase = retornarPessoaID;
+
+
         }
 
         [HttpGet]
@@ -42,8 +48,9 @@ namespace dotNETBD.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult RetornarPessoa(int id) {
-            return Ok(pessoa.RetornarPessoaPorID(id));
+        public IActionResult RetornarPessoa(RetornarPessoaPorIDRequest retornarEsseID) {
+            return Ok(retornarPessoaIDUseCase.Executar(retornarEsseID));
+            //return Ok(pessoa.RetornarPessoaPorID(id));
         }
 
         [HttpPost]
@@ -62,7 +69,5 @@ namespace dotNETBD.Controllers
             return Ok(deletarPessoaUseCase.Executar(deletarPessoa));
             //return Ok(pessoa.DeletarPessoa(id));
         }
-
-
     }
 }

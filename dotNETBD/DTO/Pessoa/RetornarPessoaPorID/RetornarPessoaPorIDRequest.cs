@@ -5,5 +5,6 @@ using System.Threading.Tasks;
 
 namespace dotNETBD.DTO.Pessoa.RetornarPessoaPorID {
     public class RetornarPessoaPorIDRequest {
+        public int id { get; set; }
     }
 }
