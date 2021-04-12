@@ -53,7 +53,7 @@ namespace dotNETBD
             services.AddScoped<IRepositorioAtualizarPessoa , RepositorioAtualizarPessoa>();
             services.AddScoped<IRepositorioDeletarPessoa , RepositorioDeletarPessoa>();
             services.AddScoped<IRepositorioRetornarPessoaPorID, RepositorioRetornarPessoaPorID>();
-
+            services.AddScoped<IRepositorioRetornarTodasPessoas , RepositorioRetornarTodasPessoas>();
 
             services.AddScoped<IAdicionarPessoaAdapter , AdicionarPessoaAdapter>();
             services.AddScoped<IAtualizarPessoaAdapter , AtualizarPessoaAdapter>();

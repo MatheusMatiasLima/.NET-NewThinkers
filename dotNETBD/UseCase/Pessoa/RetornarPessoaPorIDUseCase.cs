@@ -18,14 +18,11 @@ namespace dotNETBD.UseCase.Pessoa {
             this.adapter = adapter;
         }
 
-
-
-        //Meu request ja tem um int
-        public RetornarPessoaPorIDResponse Executar(RetornarPessoaPorIDRequest request) {
+        public RetornarPessoaPorIDResponse Executar(int request) {
             RetornarPessoaPorIDResponse response = new();
 
             try {
-                response = adapter.ConverterPessoaParaResponse(repositorio.RetornarPessoa(request.id));
+                response = adapter.ConverterPessoaParaResponse(repositorio.RetornarPessoa(request));
                 //response.mensagem = "Pessoa retornada!";
                 return response;
             }

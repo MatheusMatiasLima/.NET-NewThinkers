@@ -25,12 +25,14 @@ namespace dotNETBD.Controllers
         private readonly IAtualizarPessoaUseCase atualizarPessoaUseCase;
         private readonly IDeletarPessoaUseCase deletarPessoaUseCase;
         private readonly IRetornarPessoaPorIDUseCase retornarPessoaIDUseCase;
+        private readonly IRetornarTodasPessoasUseCase retornarTodasPessoasUseCase;
 
         public PessoaController(ILogger<PessoaController> logger , IPessoaServices pessoa ,
                                 IAdicionarPessoaUseCase adicionarPessoa,
                                 IAtualizarPessoaUseCase atualizarPessoa,
                                 IDeletarPessoaUseCase deletarPessoa,
-                                IRetornarPessoaPorIDUseCase retornarPessoaID) {
+                                IRetornarPessoaPorIDUseCase retornarPessoaID,
+                                IRetornarTodasPessoasUseCase retornarTodasPessoas) {
                    
             this.logger = logger;
             this.pessoa = pessoa;
@@ -38,18 +40,21 @@ namespace dotNETBD.Controllers
             this.atualizarPessoaUseCase = atualizarPessoa;
             this.deletarPessoaUseCase = deletarPessoa;
             this.retornarPessoaIDUseCase = retornarPessoaID;
+            this.retornarTodasPessoasUseCase = retornarTodasPessoas;
 
 
         }
 
         [HttpGet]
         public IActionResult TodasAsPessoas() {
-            return Ok(pessoa.RetornarListaDePessoas());
+            var response = retornarTodasPessoasUseCase.Executar();
+            return Ok(response.lista);
+            //return Ok(pessoa.RetornarListaDePessoas());
         }
 
         [HttpGet("{id}")]
-        public IActionResult RetornarPessoa(RetornarPessoaPorIDRequest retornarEsseID) {
-            return Ok(retornarPessoaIDUseCase.Executar(retornarEsseID));
+        public IActionResult RetornarPessoa(int id) {
+            return Ok(retornarPessoaIDUseCase.Executar(id));
             //return Ok(pessoa.RetornarPessoaPorID(id));
         }
 

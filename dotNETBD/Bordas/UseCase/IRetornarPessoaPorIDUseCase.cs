@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace dotNETBD.Bordas.Pessoa.UseCase {
     public interface IRetornarPessoaPorIDUseCase {
 
-        RetornarPessoaPorIDResponse Executar(RetornarPessoaPorIDRequest request);
+        RetornarPessoaPorIDResponse Executar(int request);
     }
 }
