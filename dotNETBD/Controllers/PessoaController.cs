@@ -60,7 +60,12 @@ namespace dotNETBD.Controllers
 
         [HttpPost]
         public IActionResult AdicionarPessoa([FromBody] AdicionarPessoaRequest novaPessoa) {
-            return Ok(adicionarPessoaUseCase.Executar(novaPessoa));
+            try  {
+                return Ok(adicionarPessoaUseCase.Executar(novaPessoa));
+            }
+            catch (Exception e) {
+                return Ok("Erro: " + e);
+            }
         }
 
         [HttpPut]

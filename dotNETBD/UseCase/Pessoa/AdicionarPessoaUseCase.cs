@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using dotNETBD.Validator;
 
 namespace dotNETBD.UseCase.Pessoa {
     public class AdicionarPessoaUseCase : IAdicionarPessoaUseCase {
@@ -22,18 +23,17 @@ namespace dotNETBD.UseCase.Pessoa {
         public AdicionarPessoaResponse Executar(AdicionarPessoaRequest request) {
             AdicionarPessoaResponse response = new();
 
-            try { 
                 //tipo Pessoa
                 var pessoaAdicionar = adapter.ConverterRequestParaPessoa(request);
                 repositorioPessoa.Add(pessoaAdicionar);
 
-                response.mensagem = "Pessoa adicionada!";
-                return response;
-            }
-            catch {
-                response.mensagem = "Erro ao adicionar pessoa!";
-                return response;
-            }
+                if (CpfValidator.ValidarCpf(pessoaAdicionar.cpf)) {
+                    response.mensagem = "Pessoa adicionada!";
+                    return response;
+                }
+                else {
+                    throw new Exception("CPF invalido");
+                }
         }
     }
 }
