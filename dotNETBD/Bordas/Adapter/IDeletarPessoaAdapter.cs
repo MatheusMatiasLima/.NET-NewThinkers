@@ -7,6 +7,6 @@ using dotNETBD.Entities;
 
 namespace dotNETBD.Bordas.Adapter {
     public interface IDeletarPessoaAdapter {
-        public Entities.Pessoa ConverterRequestParaPessoa(DeletarPessoaRequest request);
+        public Entities.Pessoa ConverterRequestParaPessoa(int request);
     }
 }

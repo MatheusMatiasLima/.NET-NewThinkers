@@ -75,7 +75,7 @@ namespace dotNETBD.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeletarPessoa(DeletarPessoaRequest deletarPessoa) {
+        public IActionResult DeletarPessoa(int deletarPessoa) {
             return Ok(deletarPessoaUseCase.Executar(deletarPessoa));
             //return Ok(pessoa.DeletarPessoa(id));
         }

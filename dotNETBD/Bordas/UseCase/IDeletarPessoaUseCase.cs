@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace dotNETBD.Bordas.Pessoa.UseCase {
     public interface IDeletarPessoaUseCase {
 
-        DeletarPessoaResponse Executar(DeletarPessoaRequest request);
+        DeletarPessoaResponse Executar(int request);
     }
 }

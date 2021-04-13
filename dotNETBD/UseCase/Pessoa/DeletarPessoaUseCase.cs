@@ -19,7 +19,7 @@ namespace dotNETBD.UseCase.Pessoa {
         }
 
 
-        public DeletarPessoaResponse Executar(DeletarPessoaRequest request) {
+        public DeletarPessoaResponse Executar(int request) {
             DeletarPessoaResponse response = new ();
 
             try {

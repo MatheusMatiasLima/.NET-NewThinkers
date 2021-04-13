@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace dotNETBD.Adapter {
     public class DeletarPessoaAdapter : IDeletarPessoaAdapter {
-        public Pessoa ConverterRequestParaPessoa(DeletarPessoaRequest request) {
+        public Pessoa ConverterRequestParaPessoa(int request) {
             Pessoa novaPessoa = new() {
-                id = request.id
+                id = request
             };
             return novaPessoa;
         }
