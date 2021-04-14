@@ -22,18 +22,18 @@ namespace dotNETBD.UseCase.Pessoa {
         public DeletarPessoaResponse Executar(int request) {
             DeletarPessoaResponse response = new ();
 
-            try {
-                var pessoaDeletar = adapter.ConverterRequestParaPessoa(request);
+            var pessoaDeletar = adapter.ConverterRequestParaPessoa(request);
 
-                repositorio.Deletar(pessoaDeletar);
-                response.mensagem = "Pessoa deletada com sucesso!";
-                return response;
-            }
-            catch {
+            bool falhou = repositorio.Deletar(pessoaDeletar);
+
+            if (falhou) { 
                 response.mensagem = "Erro ao deletar a pessoa!";
                 return response;
             }
-
+            else {
+                response.mensagem = "Pessoa deletada com sucesso!"; 
+                return response;
+            }
         }
     }
 }

@@ -33,8 +33,10 @@ namespace dotNETBD.UseCase.Pessoa {
                 return response;
                 }
             else {
-                    throw new Exception("CPF invalido");
-                }
+                response.mensagem = "Erro ao adicionar pessoa";
+                //throw new Exception("CPF ou nome invalido");
+                return response;
+            }
         }
     }
 }

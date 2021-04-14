@@ -52,5 +52,61 @@ namespace dotNET.Teste.UseCase {
 
         }
 
+        [Fact]
+        public void AddPessoaCpfInvalido() {
+            //Arrange
+            var response = new AdicionarPessoaResponse();
+            response.mensagem = "Erro ao adicionar pessoa";
+
+            var request = new AdicionarPessoaRequest();
+            request.nome = GerarPessoa.NomeQueExiste();
+            request.cpf = "CPF invalido";
+
+            Pessoa pessoa = new Pessoa();
+            pessoa.nome = request.nome;
+            pessoa.cpf = request.cpf;
+            pessoa.id = 100;
+
+            adapter.Setup(adapter => adapter.ConverterRequestParaPessoa(request)).Returns(pessoa);
+            //repositorio.Setup(repositorio => repositorio.Add(pessoa));
+            
+
+            //Act
+            var result = useCase.Executar(request);
+
+            //Assert
+            response.Should().BeEquivalentTo(result);
+
+        }
+
+
+        [Fact]
+        public void AddPessoaNomeInvalido() {
+            //Arrange
+            var response = new AdicionarPessoaResponse();
+            response.mensagem = "Erro ao adicionar pessoa";
+
+            var request = new AdicionarPessoaRequest();
+
+            request.nome = ""; //nome com tamanho 0 não pode ò-ó
+            request.cpf = GerarPessoa.GerarCpf();
+
+            Pessoa pessoa = new Pessoa();
+            pessoa.nome = request.nome;
+            pessoa.cpf = request.cpf;
+            pessoa.id = 100;
+
+            adapter.Setup(adapter => adapter.ConverterRequestParaPessoa(request)).Returns(pessoa);
+            //repositorio.Setup(repositorio => repositorio.Add(pessoa));
+
+
+            //Act
+            var result = useCase.Executar(request);
+
+            //Assert
+            response.Should().BeEquivalentTo(result);
+
+        }
+
     }
 }
