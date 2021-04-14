@@ -24,14 +24,15 @@ namespace dotNETBD.UseCase.Pessoa {
             AdicionarPessoaResponse response = new();
 
                 //tipo Pessoa
-                var pessoaAdicionar = adapter.ConverterRequestParaPessoa(request);
-                repositorioPessoa.Add(pessoaAdicionar);
+            var pessoaAdicionar = adapter.ConverterRequestParaPessoa(request);
+                
 
-                if (CpfValidator.ValidarCpf(pessoaAdicionar.cpf)) {
-                    response.mensagem = "Pessoa adicionada!";
-                    return response;
+            if (CpfValidator.ValidarCpf(pessoaAdicionar.cpf) && (pessoaAdicionar.nome.Length > 0)) {
+                repositorioPessoa.Add(pessoaAdicionar);
+                response.mensagem = "Pessoa adicionada!";
+                return response;
                 }
-                else {
+            else {
                     throw new Exception("CPF invalido");
                 }
         }
