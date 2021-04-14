@@ -11,5 +11,7 @@ namespace dotNETBD.DTO.Pessoa.RetornarPessoaPorID {
         public string nome { get; set; }
         public string cpf { get; set; }
 
+        public string mensagem;
+
     }
 }

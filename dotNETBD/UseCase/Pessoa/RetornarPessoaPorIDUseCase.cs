@@ -20,14 +20,14 @@ namespace dotNETBD.UseCase.Pessoa {
 
         public RetornarPessoaPorIDResponse Executar(int request) {
             RetornarPessoaPorIDResponse response = new();
+            response = adapter.ConverterPessoaParaResponse(repositorio.RetornarPessoa(request));
 
-            try {
-                response = adapter.ConverterPessoaParaResponse(repositorio.RetornarPessoa(request));
-                //response.mensagem = "Pessoa retornada!";
+            if (response.id == -1) {
+                response.mensagem = "Erro ao encontrar pessoa!";
                 return response;
             }
-            catch {
-                //response.mensagem = "Erro ao encontrar pessoa!";
+            else {
+                response.mensagem = "Pessoa retornada!";
                 return response;
             }
         }

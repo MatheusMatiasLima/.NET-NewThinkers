@@ -19,9 +19,18 @@ namespace dotNETBD.UseCase.Pessoa {
 
             RetornarTodasPessoasResponse response = new();
 
-            response.lista = repositorio.RetornarTodasPessoas();
+            response = repositorio.RetornarTodasPessoas();
+            
+            if (response.lista[0].id == -1) {
+                response.mensagem = "Não foi possivel achar a lista";
+                return response;
+            }
+            else {
+                response.mensagem = "Lista retornada!";
+                return response;
+            }
 
-            return response;
+           
         }
     }
 }

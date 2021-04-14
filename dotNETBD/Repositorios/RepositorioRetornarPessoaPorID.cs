@@ -16,7 +16,15 @@ namespace dotNETBD.Repositorios {
         }
         //Retorna a pessoa do ID selecionado
         public Pessoa RetornarPessoa (int id) {
-            return local.pessoas.Where(d => d.id == id).FirstOrDefault();
+            try { 
+                return local.pessoas.Where(d => d.id == id).FirstOrDefault();
+            }
+            catch {
+                Pessoa naoAchou = new ();
+                naoAchou.id = -1;
+                return naoAchou;
+            }
+
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using dotNETBD.Bordas.Repositorio;
 using dotNETBD.Context;
+using dotNETBD.DTO.Pessoa.RetornarTodasPessoas;
 using dotNETBD.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,21 @@ namespace dotNETBD.Repositorios {
             this.local = local;
         }
 
-        public List<Pessoa> RetornarTodasPessoas() {
-            return local.pessoas.ToList();
+        public RetornarTodasPessoasResponse RetornarTodasPessoas() {
+            RetornarTodasPessoasResponse response = new();
+            try {
+                response.lista = local.pessoas.ToList();
+                return response;
+            }
+            catch {
+                List<Pessoa> lista = new();
+                Pessoa pessoa = new();
+                pessoa.id = -1;
+                lista.Add(pessoa);
+                response.lista = lista;
+                
+                return response;
+            }
         }
     }
 }
